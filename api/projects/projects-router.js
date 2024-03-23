@@ -15,5 +15,14 @@ router.get('/', (req, res) => {
     })
   })
 
+router.get('/:id', validate_Project_ID, (req, res, next) => {
+  const id = req.param.id;
+  Project.get(id)
+    .then(project => {
+      res.json(req.project_ID)
+    })
+    .catch(next)
+})
+
 module.exports = router;
 
